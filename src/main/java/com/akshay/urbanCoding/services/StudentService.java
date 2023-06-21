@@ -9,6 +9,7 @@ public interface StudentService {
 //	Student st;
 	StudentDto createStudent(StudentDto student);
 	StudentDto updateStudent(StudentDto student,Integer studentId);
+//	StudentDto getStudentById(Integer studentId);
 	StudentDto getStudentById(Integer studentId);
 	List<StudentDto> getAllStudents();
 	void deleteStudent(Integer studentId);

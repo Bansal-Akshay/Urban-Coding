@@ -32,6 +32,7 @@ public class StudentController {
 	public ResponseEntity<StudentDto> saveStudent(@Valid @RequestBody StudentDto studentDto){
 //		System.out.println("hello");
 		StudentDto savedStudentDto=this.studentService.createStudent(studentDto);
+//		System.out.println(studentDto);
 		return new ResponseEntity<>(savedStudentDto,HttpStatus.CREATED);
 	}
 	
@@ -40,6 +41,7 @@ public class StudentController {
 	public ResponseEntity<StudentDto> getStudent(@PathVariable  int studentId){
 //		System.out.println("hello");
 		StudentDto savedStudentDto=this.studentService.getStudentById(studentId);
+//		Student savedStudentDto=this.studentService.getStudentById(studentId);
 		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
 	}
 	

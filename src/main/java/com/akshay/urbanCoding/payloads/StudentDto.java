@@ -1,9 +1,10 @@
 package com.akshay.urbanCoding.payloads;
 
+import java.util.List;
+
+import com.akshay.urbanCoding.entities.Teacher;
+
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 //@Getter
@@ -17,5 +18,5 @@ public class StudentDto {
 	private String studPassword;
 	private String studCollege;
 	private String studContact;
-	
+	private List<Teacher> subscribedPaidTeacher;
 }

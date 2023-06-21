@@ -1,6 +1,5 @@
 package com.akshay.urbanCoding.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -9,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -39,8 +39,25 @@ public class Student {
 	@NotBlank(message="Contact cannot be blank")
 	private String studContact;
 	
-	 @OneToMany(mappedBy="student")
-//	 @JoinColumn(name = "teacherId")
+	@OneToOne
+	private Cart cart;
+//	@NotBlank(message="Address can not be blank")
+//	private String studAddress;
+//	
+//	@NotBlank(message="Please tell us about your interests")
+//	private String studInterests;
+//	
+//	@NotBlank(message="Please ")
+//	private String studTechInterests;
+////	@NotEmpty
+////	 private Cart cart;
+////	
+////	@NotBlank
+////	private Wishlist wishlist;
+	
+	
+	 @OneToMany
+	 @JoinColumn(name = "studentId")
 	List<Teacher> subscribedPaidTeacher;
 	 
 //	 @ManyToOne

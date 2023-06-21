@@ -55,6 +55,13 @@ public class StudentServiceImpl implements StudentService {
 		
 		return this.studentToDto(student);
 	}
+//	@Override
+//	public Student getStudentById(Integer studentId) {
+//		// TODO Auto-generated method stub
+//		Student student=this.studentRepo.findById(studentId).orElseThrow((()-> new ResourceNotFoundException("Student","Student id",studentId)));
+//		
+//		return student;
+//	}
 
 	@Override
 	public List<StudentDto> getAllStudents() {

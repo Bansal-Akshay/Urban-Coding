@@ -1,13 +1,9 @@
 package com.akshay.urbanCoding.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -38,9 +34,9 @@ public class Teacher {
 	@NotBlank(message="Contact cannot be blank")
 	private String teacherContact;
 	
-	@ManyToOne
+//	@ManyToOne
 //	@JoinColumn(name = "teacherId")
-	private Student student;
+//	private Student student;
 	
 //	List<Content> freeContentMade;
 //	

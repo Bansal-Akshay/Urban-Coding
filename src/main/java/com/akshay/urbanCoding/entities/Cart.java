@@ -1,30 +1,23 @@
 package com.akshay.urbanCoding.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
 @Data
-public class Comment {
-	
+public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int commentId;
+	private int cartId;
 	
+	@OneToMany
+	List<Content> courses;
 	
-	private int studentId;
-	
-	
-	private int contentId;
-	
-	@NotBlank(message="Comment cannot be blank")
-	private String comment;
-	
-	
-	private String dateAndTime;
 	
 }
