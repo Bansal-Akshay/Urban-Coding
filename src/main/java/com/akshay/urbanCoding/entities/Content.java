@@ -1,9 +1,14 @@
 package com.akshay.urbanCoding.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -15,7 +20,9 @@ public class Content {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int contentId;
 	
-	private int teacherId;
+	@ManyToOne
+	@JoinColumn(name="teacherId")
+	private Teacher teacher;
 	
 	private String dateAndTime;
 	
@@ -37,4 +44,7 @@ public class Content {
 	
 	
 	private String content;
+	
+	 @OneToMany(mappedBy="content")
+	 List<Comment> commentsMade;
 }

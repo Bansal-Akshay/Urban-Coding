@@ -1,6 +1,6 @@
 package com.akshay.urbanCoding.entities;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,29 +8,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Entity
 @Data
-public class Comment {
+public class Subsciption {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int commentId;
+	private int subscriptionId;
+	
+	private int price;
+	
+	private int validity;
+	
+    private LocalDate startDate;
+	
+	private LocalDate endDate;
+	
+	@OneToOne(mappedBy="subscription")
+	private Teacher teacher;
 	
 	@ManyToOne
-	@JoinColumn(name="student_id")
-	private Student student;
-	
-	@ManyToOne
-	@JoinColumn(name="content_id")
-	private Content content;
-	
-	@NotBlank(message="Comment cannot be blank")
-	private String comment;
-	
-	
-	private ZonedDateTime dateAndTime;
-	
+	@JoinColumn(name="modelId")
+	private Model model;
 }

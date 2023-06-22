@@ -40,29 +40,15 @@ public class Student {
 	private String studContact;
 	
 	@OneToOne
+	@JoinColumn(name="cart_id",referencedColumnName = "cartId")
 	private Cart cart;
-//	@NotBlank(message="Address can not be blank")
-//	private String studAddress;
-//	
-//	@NotBlank(message="Please tell us about your interests")
-//	private String studInterests;
-//	
-//	@NotBlank(message="Please ")
-//	private String studTechInterests;
-////	@NotEmpty
-////	 private Cart cart;
-////	
-////	@NotBlank
-////	private Wishlist wishlist;
-	
-	
-	 @OneToMany
-	 @JoinColumn(name = "studentId")
+
+	 @OneToMany(mappedBy="student")
+//	 @JoinColumn(name = "teacherId")
 	List<Teacher> subscribedPaidTeacher;
 	 
-//	 @ManyToOne
-//	 @JoinColumn(name = "commentId")
-//	List<Comment> commentsMade;
+	@OneToMany(mappedBy="student")
+	List<Comment> commentsMade;
 //	
 	
 }
