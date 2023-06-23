@@ -61,7 +61,21 @@ public class StudentController {
 		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
 	}
 	
+	// subscribe to teacher
 	
+	// unsubscribe to teacher
+	
+	// add course to cart
+	
+	// delete course from cart
+	
+	// post comment on content
+	
+	// show all comments made
+	
+	// delete own comment
+	
+	// edit own comment
 	
 }
 

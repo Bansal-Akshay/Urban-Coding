@@ -3,7 +3,6 @@ package com.akshay.urbanCoding.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +25,7 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	//save new tecaher
+	//save new teacher
 	@PostMapping("/new")
 	public ResponseEntity<TeacherDto> saveTeacher(@Valid @RequestBody TeacherDto teacherDto){
 		TeacherDto savedTeacherDto=this.teacherService.createTeacher(teacherDto);
@@ -58,5 +57,21 @@ public class TeacherController {
 		TeacherDto savedTeacherDto= this.teacherService.updateTeacher(teacherDto, id);
 		return new ResponseEntity<>(savedTeacherDto,HttpStatus.OK);
 	}
+	
+	// post content
+	
+	//subscribe to model
+	
+	// unsubscribe to model
+	
+	// reply to comments on content
+	
+	// delete comment of students from own content
+	
+	// edit content
+	
+	// delete content
+	
+	
 	
 }

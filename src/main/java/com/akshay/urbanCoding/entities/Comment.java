@@ -1,6 +1,6 @@
 package com.akshay.urbanCoding.entities;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +31,6 @@ public class Comment {
 	private String comment;
 	
 	
-	private ZonedDateTime dateAndTime;
+	private LocalDateTime dateAndTime;
 	
 }
