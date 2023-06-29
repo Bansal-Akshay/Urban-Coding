@@ -2,6 +2,8 @@ package com.akshay.urbanCoding.payloads;
 
 import java.util.List;
 
+import com.akshay.urbanCoding.entities.Cart;
+import com.akshay.urbanCoding.entities.Comment;
 import com.akshay.urbanCoding.entities.Teacher;
 
 import lombok.Data;
@@ -19,4 +21,6 @@ public class StudentDto {
 	private String studCollege;
 	private String studContact;
 	private List<Teacher> subscribedPaidTeacher;
+	private Cart cart;
+	private List<Comment> commentsMade;
 }

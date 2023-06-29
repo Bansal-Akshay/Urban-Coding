@@ -13,4 +13,6 @@ public interface StudentService {
 	StudentDto getStudentById(Integer studentId);
 	List<StudentDto> getAllStudents();
 	void deleteStudent(Integer studentId);
+	StudentDto subscribeToTeacher(Integer studentId,Integer teacherId);
+	StudentDto unsubscribeToTeacher(Integer studentId, Integer teacherId);
 }

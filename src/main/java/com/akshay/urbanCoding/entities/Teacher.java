@@ -1,14 +1,16 @@
 package com.akshay.urbanCoding.entities;
 
 import java.util.List;
-import java.util.concurrent.Flow.Subscription;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
@@ -41,9 +43,9 @@ public class Teacher {
 	@NotBlank(message="Contact cannot be blank")
 	private String teacherContact;
 	
-	@ManyToOne
-	@JoinColumn(name = "subscriberStudentId")
-	private Student student;
+	@JsonIgnore
+	@ManyToMany(mappedBy="subscribedPaidTeacher",cascade = { CascadeType.ALL })
+	private List<Student> student;
 	
 	@OneToOne
 	@JoinColumn(name="subscription_id",referencedColumnName = "subscriptionId")

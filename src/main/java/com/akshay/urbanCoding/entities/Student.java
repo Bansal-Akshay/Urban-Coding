@@ -2,11 +2,16 @@ package com.akshay.urbanCoding.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
@@ -43,12 +48,15 @@ public class Student {
 	@JoinColumn(name="cart_id",referencedColumnName = "cartId")
 	private Cart cart;
 
-	 @OneToMany(mappedBy="student")
-//	 @JoinColumn(name = "teacherId")
+	 @ManyToMany(cascade = { CascadeType.ALL })
+	 @JsonInclude(JsonInclude.Include.NON_NULL)
+	 @JoinTable(
+			  name = "student_teacher", 
+			  joinColumns = @JoinColumn(name = "student_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "teacher_id"))
 	List<Teacher> subscribedPaidTeacher;
 	 
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="student",cascade = { CascadeType.ALL })
 	List<Comment> commentsMade;
-//	
-	
+ 
 }

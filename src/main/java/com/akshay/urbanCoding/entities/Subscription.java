@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Subsciption {
+public class Subscription {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

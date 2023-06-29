@@ -1,5 +1,7 @@
 package com.akshay.urbanCoding.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +47,15 @@ public class StudentController {
 		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
 	}
 	
+	//Get all Student 
+		@GetMapping("/getAll")
+		public ResponseEntity<List<StudentDto>> getAllStudents(){
+//			System.out.println("hello");
+			List<StudentDto> savedStudentDto=this.studentService.getAllStudents();
+//			Student savedStudentDto=this.studentService.getStudentById(studentId);
+			return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
+		}
+	
 	//Delete Student by id
 	@DeleteMapping("/delete/{studentId}")
 	public ResponseEntity<String> deleteStudent(@PathVariable  int studentId){
@@ -61,21 +72,21 @@ public class StudentController {
 		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
 	}
 	
-	// subscribe to teacher
+	// subscribe to teacher -> teacher id , student id
+	@PutMapping("/{studentId}/subscribe/{teacherId}")
+	public ResponseEntity<StudentDto> subscribeToTeacher(@PathVariable int studentId,@PathVariable int teacherId){
+		StudentDto savedStudentDto=this.studentService.subscribeToTeacher(studentId, teacherId);
+		
+		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
+	}
 	
-	// unsubscribe to teacher
-	
-	// add course to cart
-	
-	// delete course from cart
-	
-	// post comment on content
-	
-	// show all comments made
-	
-	// delete own comment
-	
-	// edit own comment
+	// unsubscribe to teacher -> teacher id , student id
+	@PutMapping("/{studentId}/unsubscribe/{teacherId}")
+	public ResponseEntity<StudentDto> unsubscribeToTeacher(@PathVariable int studentId,@PathVariable int teacherId){
+		StudentDto savedStudentDto=this.studentService.unsubscribeToTeacher(studentId, teacherId);
+		
+		return new ResponseEntity<>(savedStudentDto,HttpStatus.OK);
+	}
 	
 }
 

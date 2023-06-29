@@ -1,5 +1,7 @@
 package com.akshay.urbanCoding.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +42,12 @@ public class TeacherController {
 	}
 	
 	//get all Teachers
-//	public ResponseEntity<> saveTeacher(){
-//		
-//	}
+	@GetMapping("/getAll")
+	public ResponseEntity<List<TeacherDto>> getAllTeachers(){
+		List<TeacherDto> teachers=this.teacherService.getAllTeachers();
+		return new ResponseEntity<>(teachers,HttpStatus.OK);
+		
+	}
 	
 	//delete teacher by id
 	@DeleteMapping("/delete/{id}")
@@ -58,19 +63,9 @@ public class TeacherController {
 		return new ResponseEntity<>(savedTeacherDto,HttpStatus.OK);
 	}
 	
-	// post content
 	
-	//subscribe to model
+	// getSubscription details
 	
-	// unsubscribe to model
-	
-	// reply to comments on content
-	
-	// delete comment of students from own content
-	
-	// edit content
-	
-	// delete content
 	
 	
 	

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.akshay.urbanCoding.dao.StudentRepo;
+import com.akshay.urbanCoding.dao.TeacherRepo;
 import com.akshay.urbanCoding.entities.Student;
+import com.akshay.urbanCoding.entities.Teacher;
 import com.akshay.urbanCoding.exceptions.ResourceNotFoundException;
 import com.akshay.urbanCoding.payloads.StudentDto;
 import com.akshay.urbanCoding.services.StudentService;
@@ -18,6 +20,9 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	private StudentRepo studentRepo;
+	
+	@Autowired
+	private TeacherRepo teacherRepo;
 	
 	@Autowired
     private ModelMapper modelMapper;
@@ -102,6 +107,38 @@ public class StudentServiceImpl implements StudentService {
 //		studentDto.setStudUserName(student.getStudUserName());
 //		studentDto.setStudPassword(student.getStudPassword());
 		return studentDto;
+	}
+
+	@Override
+	public StudentDto subscribeToTeacher(Integer studentId, Integer teacherId) {
+		// TODO Auto-generated method stub
+		Student student=studentRepo.findById(studentId).orElseThrow((()-> new ResourceNotFoundException("Student","Student id ",studentId)));
+		
+		Teacher teacher=teacherRepo.findById(teacherId).orElseThrow((()-> new ResourceNotFoundException("Teacher","Teacher id ",teacherId)));
+		
+		student.getSubscribedPaidTeacher().add(teacher);
+		
+//		List<Teacher> list=student.getSubscribedPaidTeacher();
+//		System.out.println(list);
+//		list.add(teacher);
+//		System.out.println(list);
+//		
+//		student.setSubscribedPaidTeacher(list);
+//		System.out.println(student);
+		
+		Student updatedStudent=studentRepo.save(student);
+		return this.studentToDto(updatedStudent);
+	}
+
+	@Override
+	public StudentDto unsubscribeToTeacher(Integer studentId, Integer teacherId) {
+		// TODO Auto-generated method stub
+		Student student=studentRepo.findById(studentId).orElseThrow((()-> new ResourceNotFoundException("Student","Student id ",studentId)));
+		
+		Teacher teacher=teacherRepo.findById(teacherId).orElseThrow((()-> new ResourceNotFoundException("Teacher","Teacher id ",teacherId)));
+		student.getSubscribedPaidTeacher().remove(teacher);
+		Student updatedStudent=studentRepo.save(student);
+		return this.studentToDto(updatedStudent);
 	}
 
 }
